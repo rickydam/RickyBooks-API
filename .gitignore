@@ -62,3 +62,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Heroku overwrites database.yml during production deployment, so ignore it
+config/database.yml
