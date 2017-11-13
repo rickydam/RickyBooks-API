@@ -7,6 +7,7 @@ one:
   textbook_condition: MyString
   textbook_type: MyString
   textbook_coursecode: MyString
+  textbook_price: MyString
 
 two:
   textbook_title: MyString
@@ -15,3 +16,4 @@ two:
   textbook_condition: MyString
   textbook_type: MyString
   textbook_coursecode: MyString
+  textbook_price: MyString

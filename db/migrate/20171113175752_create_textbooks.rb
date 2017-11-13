@@ -7,6 +7,7 @@ class CreateTextbooks < ActiveRecord::Migration[5.1]
       t.string :textbook_condition
       t.string :textbook_type
       t.string :textbook_coursecode
+      t.string :textbook_price
 
       t.timestamps
     end

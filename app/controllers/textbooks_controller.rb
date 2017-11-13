@@ -71,7 +71,8 @@ class TextbooksController < ApplicationController
       :textbook_edition,
       :textbook_condition,
       :textbook_type,
-      :textbook_coursecode
+      :textbook_coursecode,
+      :textbook_price
     )
   end
 

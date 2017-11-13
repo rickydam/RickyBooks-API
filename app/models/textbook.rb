@@ -5,4 +5,5 @@ class Textbook < ApplicationRecord
   validates :textbook_condition,  presence: true
   validates :textbook_type,       presence: true
   validates :textbook_coursecode, presence: true
+  validates :textbook_price,      presence: true
 end
