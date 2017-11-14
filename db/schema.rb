@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20171114043514) do
     t.string "textbook_type"
     t.string "textbook_coursecode"
     t.string "textbook_price"
-    t.datetime "created", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
