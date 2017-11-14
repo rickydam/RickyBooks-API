@@ -1,7 +1,7 @@
 class TextbooksController < ApplicationController
 
   def index
-    textbooks = Textbook.order('id ASC');
+    textbooks = Textbook.order('created_at DESC');
     render json: {
       status: 'SUCCESS',
       message: 'Loaded textbooks listings',
