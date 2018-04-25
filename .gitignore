@@ -4,20 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-/node_modules
-/yarn-error.log
-
-.byebug_history
-
 *.rbc
 capybara-*.html
 .rspec
@@ -32,14 +18,15 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
-# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
+# Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
+config/master.key
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
 
 # dotenv
-# TODO Comment out this rule if environment variables can be committed
+# Comment out this rule if environment variables can be committed
 .env
 
 ## Environment normalization:
@@ -63,5 +50,24 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-# Heroku overwrites database.yml during production deployment, so ignore it
-config/database.yml
+# Ignore node_modules
+node_modules/
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore uploaded files in development
+/storage/*
+
+# Ignore these IntelliJ IDE files
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+
+# Ignore the mac config file
+.DS_STORE
