@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails RickyBooks-API: development" uuid="f9892695-d464-4bb1-8293-63071a0df4b3">
+    <data-source source="LOCAL" name="Rails RickyBooks-API: development" uuid="8c8eefe2-3b6a-4365-8a6b-657c1437bfb6">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
