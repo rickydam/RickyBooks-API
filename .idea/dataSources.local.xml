@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails RickyBooks-API: development" uuid="f9892695-d464-4bb1-8293-63071a0df4b3">
+      <database-info product="PostgreSQL" version="10.2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <user-name>rickydam</user-name>
+      <introspection-schemas>RickyBooks-API_development:public</introspection-schemas>
+    </data-source>
+  </component>
+</project>
