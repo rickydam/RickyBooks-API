@@ -4,7 +4,7 @@ class SessionsController < ApiController
   def create
     if (user = User.valid_login?(params[:email].downcase, params[:password]))
       regenerate_token(user)
-      send_token(user)
+      send_response(user)
     else
       render_unauthorized("Invalid email/password combination")
     end
@@ -21,8 +21,12 @@ class SessionsController < ApiController
     user.regenerate_token
   end
 
-  def send_token(user)
-    render json: { token: user.token }
+  def send_response(user)
+    render json: {
+      token: user.token,
+      user_id: user.id,
+      name: user.name
+    }
   end
 
   def logout

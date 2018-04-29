@@ -7,7 +7,11 @@ class UsersController < ApiController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      render json: { token: @user.token }
+      render json: {
+        token: @user.token,
+        user_id: @user.id,
+        name: @user.name
+      }
     else
       render json: @user.errors, status: 422
     end
