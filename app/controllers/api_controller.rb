@@ -21,7 +21,7 @@ class ApiController < ApplicationController
   private
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
+    authenticate_with_http_token do |token|
       # Compare the tokens in a time-constant manner to mitigate timing attacks
       if (user = User.find_by(token: token))
         ActiveSupport::SecurityUtils.secure_compare(token, user.token)
