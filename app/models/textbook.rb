@@ -1,5 +1,7 @@
 class Textbook < ApplicationRecord
   belongs_to :user
+  has_one :conversation
+
   validates :textbook_title,      presence: true
   validates :textbook_author,     presence: true
   validates :textbook_edition,    presence: true
