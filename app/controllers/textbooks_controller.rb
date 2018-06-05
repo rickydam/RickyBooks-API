@@ -51,7 +51,7 @@ class TextbooksController < ApplicationController
     else
       render json: {
         status: 'ERROR',
-        message: 'Updated textbook listing',
+        message: 'Textbook listing not updated',
         data: textbook
       }, status: :unprocessable_entity
     end
