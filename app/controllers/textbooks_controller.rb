@@ -1,4 +1,7 @@
 class TextbooksController < ApiController
+  before_action :require_login
+  skip_before_action :require_login, only: [:index, :show]
+
   def index
     if params[:user_id].present?
       user = User.find(params[:user_id])
