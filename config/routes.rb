@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :users do
+    resources :textbooks
+  end
+
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 end

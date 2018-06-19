@@ -1,6 +1,11 @@
-class TextbooksController < ApplicationController
+class TextbooksController < ApiController
   def index
-    textbooks = Textbook.order('created_at DESC')
+    if params[:user_id].present?
+      user = User.find(params[:user_id])
+      textbooks = user.textbooks
+    else
+      textbooks = Textbook.order('created_at DESC')
+    end
     render :json => textbooks, :include => {:user => {:only => :name}}
   end
 

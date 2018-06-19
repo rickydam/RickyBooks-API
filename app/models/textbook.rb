@@ -1,6 +1,6 @@
 class Textbook < ApplicationRecord
   belongs_to :user
-  has_one :conversation
+  has_one :conversation, dependent: :destroy
 
   validates :textbook_title,      presence: true
   validates :textbook_author,     presence: true
