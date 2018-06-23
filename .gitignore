@@ -47,7 +47,7 @@ build-iPhoneSimulator/
 # .ruby-gemset
 
 # Comment out this rule if you are OK with secrets being uploaded to the repo
-config/initializers/secret_tokoen.rb
+config/initializers/secret_token.rb
 config/master.key
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
