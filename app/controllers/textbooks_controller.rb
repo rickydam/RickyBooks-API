@@ -9,7 +9,11 @@ class TextbooksController < ApiController
     else
       textbooks = Textbook.order('created_at DESC')
     end
-    render :json => textbooks, :include => {:user => {:only => :name}}
+    render :json => textbooks,
+           :include => {
+               :user => {:only => :name},
+               :images => {:only => :url}
+           }
   end
 
   def show
@@ -21,19 +25,29 @@ class TextbooksController < ApiController
     }, status: :ok
   end
 
+  def aws
+    if params[:id].present? && params[:ext].present?
+      s3 = Aws::S3::Resource.new(region: 'ca-central-1')
+      obj = s3.bucket('rickybooks').object('TextbookImage' + params[:id] + '.' + params[:ext])
+
+      get_url = URI.parse(obj.presigned_url(:get))
+      textbook = Textbook.find(params[:id])
+      textbook.images.create(:url => get_url)
+
+      post_url = URI.parse(obj.presigned_url(:put))
+      render :json => post_url
+    end
+  end
+
   def create
     textbook = Textbook.new(textbook_params)
     if textbook.save
-      render json: {
-        status: 'SUCCESS',
-        message: 'Added textbook listing',
-        data: textbook
-      }, status: :ok
+      render :json => textbook.id
     else
       render json: {
-        status: 'ERROR',
-        message: 'Textbook listing not added',
-        data: textbook.errors
+          status: 'ERROR',
+          message: 'Textbook listing not added',
+          data: textbook.errors
       }, status: :unprocessable_entity
     end
   end
@@ -78,5 +92,11 @@ class TextbooksController < ApiController
       :textbook_coursecode,
       :textbook_price
     )
+  end
+
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}",
+                                               success_action_status: '201',
+                                               acl: 'public-read')
   end
 end
