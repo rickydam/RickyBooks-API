@@ -55,11 +55,7 @@ class TextbooksController < ApiController
   def destroy
     textbook = Textbook.find(params[:id])
     textbook.destroy
-    render json: {
-      status: 'SUCCESS',
-      message: 'Deleted textbook listing',
-      data: textbook
-    }, status: :ok
+    head :ok
   end
 
   def update
