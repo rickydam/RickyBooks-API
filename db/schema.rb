@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_08_074240) do
+ActiveRecord::Schema.define(version: 2018_07_10_002107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2018_07_08_074240) do
     t.datetime "updated_at", null: false
     t.bigint "textbook_id"
     t.string "file_extension"
+    t.string "url_created_at"
+    t.string "file_name"
     t.index ["textbook_id"], name: "index_images_on_textbook_id"
   end
 
