@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem 'aws-sdk-s3', '~> 1.14.0'
 gem 'dotenv-rails', '~> 2.5.0'
+gem 'fcm'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
