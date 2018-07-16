@@ -31,5 +31,6 @@ class SessionsController < ApiController
 
   def logout
     current_user.invalidate_token
+    current_user.invalidate_firebase_token
   end
 end
