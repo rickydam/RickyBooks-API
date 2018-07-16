@@ -20,6 +20,10 @@ class User < ApplicationRecord
     update_columns(token: nil)
   end
 
+  def invalidate_firebase_token
+    update_columns(firebase_token: nil)
+  end
+
   def self.valid_login?(email, password)
     user = find_by(email: email)
     if user && user.authenticate(password)
