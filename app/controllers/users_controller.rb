@@ -17,6 +17,11 @@ class UsersController < ApiController
     end
   end
 
+  def firebase
+    user = User.find(params[:user_id])
+    user.update_column(:firebase_token, params[:firebase_token])
+  end
+
   private
 
   def user_params
