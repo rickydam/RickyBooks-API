@@ -16,6 +16,23 @@ class MessagesController < ApiController
   def create
     @message = @conversation.messages.new(message_params)
     if @message.save
+      if params[:user_id] == @conversation.recipient_id.to_s
+        @other_user_id = @conversation.sender_id
+      else
+        @other_user_id = @conversation.recipient_id
+      end
+      other_user = User.find(@other_user_id)
+      other_user_firebase_token = other_user.firebase_token
+      fcm = FCM.new(ENV['FIREBASE_SERVER_KEY'])
+      token = [other_user_firebase_token]
+      data = {
+          notification: {
+              title: 'Message from ' + other_user.name,
+              body: params[:body]
+          }
+      }
+      fcm.send(token, data)
+
       render json: {
           status: 'SUCCESS'
       }, status: :ok
