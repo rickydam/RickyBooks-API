@@ -26,7 +26,7 @@ class MessagesController < ApiController
       fcm = FCM.new(ENV['FIREBASE_SERVER_KEY'])
       token = [other_user_firebase_token]
       data = {
-          notification: {
+          data: {
               title: 'Message from ' + User.find(params[:user_id]).name,
               body: params[:body]
           }
