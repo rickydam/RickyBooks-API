@@ -27,7 +27,7 @@ class MessagesController < ApiController
       token = [other_user_firebase_token]
       data = {
           notification: {
-              title: 'Message from ' + other_user.name,
+              title: 'Message from ' + User.find(params[:user_id]).name,
               body: params[:body]
           }
       }
