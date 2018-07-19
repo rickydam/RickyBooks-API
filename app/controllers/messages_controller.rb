@@ -28,7 +28,8 @@ class MessagesController < ApiController
       data = {
           data: {
               title: 'Message from ' + User.find(params[:user_id]).name,
-              body: params[:body]
+              body: params[:body],
+              conversation_id: params[:conversation_id]
           }
       }
       fcm.send(token, data)
