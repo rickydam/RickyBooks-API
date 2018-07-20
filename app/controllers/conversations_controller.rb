@@ -7,7 +7,15 @@ class ConversationsController < ApiController
 
   def show
     conversations = Conversation.where(:sender_id => params[:id]) + Conversation.where(:recipient_id => params[:id])
-    render :json => conversations, :include => {:recipient => {:only => :name}}
+    render :json => conversations,
+           :include => {
+               :recipient => {
+                   :only => :name
+               },
+               :sender => {
+                   :only => :name
+               }
+           }
   end
 
   def create
