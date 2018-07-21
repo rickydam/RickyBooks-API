@@ -32,6 +32,11 @@ class ConversationsController < ApiController
     end
   end
 
+  def destroy
+    conversation = Conversation.find(params[:id])
+    conversation.destroy
+  end
+
   private
 
   def conversation_params
