@@ -25,6 +25,11 @@ class UsersController < ApiController
     user.update_column(:firebase_token, params[:firebase_token])
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+  end
+
   private
 
   def user_params
