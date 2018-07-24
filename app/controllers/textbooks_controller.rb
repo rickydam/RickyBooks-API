@@ -21,7 +21,7 @@ class TextbooksController < ApiController
 
     if params[:user_id].present?
       user = User.find(params[:user_id])
-      textbooks = user.textbooks
+      textbooks = user.textbooks.order('created_at DESC')
     else
       textbooks = Textbook.order('created_at DESC')
     end
