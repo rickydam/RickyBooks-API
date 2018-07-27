@@ -33,14 +33,6 @@ class MessagesController < ApiController
           }
       }
       fcm.send(token, data)
-
-      render json: {
-          status: 'SUCCESS'
-      }, status: :ok
-    else
-      render json: {
-          status: 'ERROR'
-      }, status: :unprocessable_entity
     end
   end
 
