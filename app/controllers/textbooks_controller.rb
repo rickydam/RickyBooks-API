@@ -54,8 +54,8 @@ class TextbooksController < ApiController
 
       s3 = Aws::S3::Resource.new(region: 'ca-central-1')
       obj = s3.bucket('rickybooks').object(file_name)
-      post_url = URI.parse(obj.presigned_url(:put))
-      render :json => post_url
+      put_url = URI.parse(obj.presigned_url(:put))
+      render :json => put_url
     end
   end
 
