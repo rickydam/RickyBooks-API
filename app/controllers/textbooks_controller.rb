@@ -106,6 +106,12 @@ class TextbooksController < ApiController
     end
   end
 
+  def delete_image
+    textbook = Textbook.find(params[:id])
+    image = textbook.images.first
+    image.destroy
+  end
+
   def update
     textbook = Textbook.find(params[:id])
     textbook.update_attributes(textbook_params)
