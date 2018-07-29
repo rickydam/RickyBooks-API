@@ -95,19 +95,7 @@ class TextbooksController < ApiController
 
   def update
     textbook = Textbook.find(params[:id])
-    if textbook.update_attributes(textbook_params)
-      render json: {
-        status: 'SUCCESS',
-        message: 'Updated textbook listing',
-        data: textbook
-      }, status: :ok
-    else
-      render json: {
-        status: 'ERROR',
-        message: 'Textbook listing not updated',
-        data: textbook
-      }, status: :unprocessable_entity
-    end
+    textbook.update_attributes(textbook_params)
   end
 
   private
