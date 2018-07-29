@@ -115,6 +115,7 @@ class TextbooksController < ApiController
 
   def textbook_params
     params.permit(
+      :id,
       :user_id,
       :textbook_title,
       :textbook_author,
