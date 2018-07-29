@@ -93,6 +93,19 @@ class TextbooksController < ApiController
     textbook.destroy
   end
 
+  def get_delete_url
+    if params[:id].present?
+      textbook = Textbook.find(params[:id])
+      image = textbook.images.first
+      file_extension = image.file_extension
+      s3 = Aws::S3::Resource.new(region: 'ca-central-1')
+      filename = 'TextbookImage' + params[:id] + '.' + file_extension
+      obj = s3.bucket('rickybooks').object(filename)
+      delete_url = URI.parse(obj.presigned_url(:delete))
+      render :json => delete_url
+    end
+  end
+
   def update
     textbook = Textbook.find(params[:id])
     textbook.update_attributes(textbook_params)
