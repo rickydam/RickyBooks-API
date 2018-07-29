@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   get 'aws/:id/:ext' => 'textbooks#aws'
+  delete 'delete_image/:id' => 'textbooks#delete_image'
   get 'get_delete_url/:id' => 'textbooks#get_delete_url'
 
   post 'firebase' => 'users#firebase'
