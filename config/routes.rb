@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get 'get_delete_url/:id' => 'textbooks#get_delete_url'
 
   post 'firebase' => 'users#firebase'
+
+  get 'search/:category/:input' => 'textbooks#search'
 end
