@@ -156,7 +156,9 @@ class TextbooksController < ApiController
       :textbook_condition,
       :textbook_type,
       :textbook_coursecode,
-      :textbook_price
+      :textbook_price,
+      :category,
+      :input
     )
   end
 end
