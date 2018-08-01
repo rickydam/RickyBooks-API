@@ -42,6 +42,33 @@ class TextbooksController < ApiController
     }, status: :ok
   end
 
+  def search
+    if params[:category].present? && params[:input].present?
+      textbooks = nil
+      case params[:category]
+      when 'Title'
+        textbooks = Textbook.where('textbook_title ILIKE ?', "%#{params[:input]}%")
+      when 'Author'
+        textbooks = Textbook.where('textbook_author ILIKE ?', "%#{params[:input]}%")
+      when 'Edition'
+        textbooks = Textbook.where('textbook_edition ILIKE ?', "%#{params[:input]}%")
+      when 'Condition'
+        textbooks = Textbook.where('textbook_condition ILIKE ?', "%#{params[:input]}%")
+      when 'Type'
+        textbooks = Textbook.where('textbook_type ILIKE ?', "%#{params[:input]}%")
+      when 'Course'
+        textbooks = Textbook.where('textbook_coursecode ILIKE ?', "%#{params[:input]}")
+      else
+        # No action required
+      end
+      render :json => textbooks.order('created_at DESC'),
+             :include => {
+                 :user => {:only => :name},
+                 :images => {:only => :url}
+             }
+    end
+  end
+
   def aws
     if params[:id].present? && params[:ext].present?
       file_name = 'TextbookImage' + params[:id] + '.' + params[:ext]
