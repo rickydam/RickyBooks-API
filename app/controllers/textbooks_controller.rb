@@ -1,6 +1,6 @@
 class TextbooksController < ApiController
   before_action :require_login
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: [:index, :show, :search]
 
   def index
     # Set the wanted time interval passed before generating a new signed get url
