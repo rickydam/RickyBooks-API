@@ -3,7 +3,9 @@ class SessionsController < ApiController
 
   def create
     if (user = User.valid_login?(params[:email].downcase, params[:password]))
-      regenerate_token(user)
+      if user.token == nil
+        regenerate_token(user)
+      end
       send_response(user)
     else
       render_unauthorized("Invalid email/password combination")
