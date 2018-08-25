@@ -1,0 +1,2 @@
+class NotifyItemsController < ApplicationController
+end
