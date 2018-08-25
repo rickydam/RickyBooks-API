@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   post 'firebase' => 'users#firebase'
 
   get 'search/:category/:input' => 'textbooks#search'
+
+  get 'notify_results/:user_id' => 'notify_items#notify_results'
 end
