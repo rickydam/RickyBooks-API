@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_035841) do
+ActiveRecord::Schema.define(version: 2018_08_25_161304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2018_07_16_035841) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notify_items", force: :cascade do |t|
+    t.string "category"
+    t.string "input"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_notify_items_on_user_id"
+  end
+
   create_table "textbooks", force: :cascade do |t|
     t.string "textbook_title"
     t.string "textbook_author"
@@ -74,5 +83,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_035841) do
   add_foreign_key "images", "textbooks"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "notify_items", "users"
   add_foreign_key "textbooks", "users"
 end
