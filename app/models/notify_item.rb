@@ -1,0 +1,2 @@
+class NotifyItem < ApplicationRecord
+end
