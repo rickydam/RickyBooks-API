@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :textbooks
+  resources :notify_items
 
   resources :conversations do
     resources :messages
