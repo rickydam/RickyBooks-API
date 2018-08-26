@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :textbooks
-  has_many :notify_items
+  has_many :notify_items, dependent: :destroy
 
   has_secure_password
   has_secure_token
