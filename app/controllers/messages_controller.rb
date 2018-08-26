@@ -36,6 +36,9 @@ class MessagesController < ApiController
       render status: :ok
     else
       render status: :unprocessable_entity
+      if @conversation.messages.count == 0
+        @conversation.destroy
+      end
     end
   end
 
