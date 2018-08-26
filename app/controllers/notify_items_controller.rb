@@ -60,6 +60,11 @@ class NotifyItemsController < ApiController
     end
   end
 
+  def destroy
+    notify_item = NotifyItem.find(params[:id])
+    notify_item.destroy
+  end
+
   private
 
   def notify_items_params
