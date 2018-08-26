@@ -2,8 +2,11 @@ class NotifyItemsController < ApiController
   before_action :require_login
 
   def index
-    notify_items = NotifyItem.all
-    render :json => notify_items
+    authenticate_with_http_token do |token|
+      user = User.find_by_token(token)
+      notify_items = user.notify_items
+      render :json => notify_items
+    end
   end
 
   def create
