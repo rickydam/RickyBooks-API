@@ -33,6 +33,9 @@ class MessagesController < ApiController
           }
       }
       fcm.send(token, data)
+      render status: :ok
+    else
+      render status: :unprocessable_entity
     end
   end
 
