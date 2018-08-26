@@ -96,6 +96,56 @@ class TextbooksController < ApiController
   def create
     textbook = Textbook.new(textbook_params)
     if textbook.save
+      textbook_title = params[:textbook_title]
+      textbook_author = params[:textbook_author]
+      textbook_coursecode = params[:textbook_coursecode]
+
+      notify_items = NotifyItem.all
+      notify_items.each do |item|
+        if item.category == 'Title'
+          if textbook_title.include? item.input
+            fcm = FCM.new(ENV['FIREBASE_SERVER_KEY'])
+            token = [item.user.firebase_token]
+            data = {
+                data: {
+                    title: 'Someone posted a textbook you want!',
+                    body: 'Textbook: ' + item.category + ', matching keyword: ' + item.input,
+                    action: 'NotifyFragment'
+                }
+            }
+            fcm.send(token, data)
+          end
+        end
+        if item.category == 'Author'
+          if textbook_author.include? item.input
+            fcm = FCM.new(ENV['FIREBASE_SERVER_KEY'])
+            token = [item.user.firebase_token]
+            data = {
+                data: {
+                    title: 'Someone posted a textbook you want!',
+                    body: 'Textbook: ' + item.category + ', matching keyword: ' + item.input,
+                    action: 'NotifyFragment'
+                }
+            }
+            fcm.send(token, data)
+          end
+        end
+        if item.category == 'Coursecode'
+          if textbook_coursecode.include? item.input
+            fcm = FCM.new(ENV['FIREBASE_SERVER_KEY'])
+            token = [item.user.firebase_token]
+            data = {
+                data: {
+                    title: 'Someone posted a textbook you want!',
+                    body: 'Textbook: ' + item.category + ', matching keyword: ' + item.input,
+                    action: 'NotifyFragment'
+                }
+            }
+            fcm.send(token, data)
+          end
+        end
+      end
+
       render :json => textbook.id
     else
       render json: {
